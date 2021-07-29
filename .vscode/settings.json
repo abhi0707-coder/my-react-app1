@@ -1,4 +1,8 @@
 {
-    "editor.formatOnType": true,
-    "editor.formatOnSave": true
+  "editor.formatOnType": true,
+  "editor.defaultFormatter": "SimonSiefke.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.formatOnSave": true
 }
