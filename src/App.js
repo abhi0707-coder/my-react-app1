@@ -2,16 +2,16 @@ import logo from './logo.svg'
 import './App.css'
 
 function App() {
-  let title = 'Event Demo'
-
-  let myfun = () => {
-    alert('I am a click handelar')
-  }
+  let list = ['Hiii', 'Hiii']
 
   return (
     <div>
-      <h1>{title}</h1>
-      <input type="button" value="click me" onClick={myfun} />
+      <h1>Working event </h1>
+      <input type="button" value="say hii" />
+
+      {list.map((item) => {
+        return <h3>{item}</h3>
+      })}
     </div>
   )
 }
