@@ -3,9 +3,17 @@ import './App.css'
 import { useState } from 'react'
 
 function App() {
+  let counter = 100
+  let Increment = () => {
+    counter += 1
+    console.log(counter)
+  }
+
   return (
     <div>
-      <h1 className="bg-secondary text-light p-2">Hello Abhijeet</h1>
+      <h1>Stateless does not update webpage</h1>
+      {counter}
+      <input type="button" value="INCREMENT" onClick={Increment} />
     </div>
   )
 }
