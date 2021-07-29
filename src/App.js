@@ -2,18 +2,17 @@ import logo from './logo.svg'
 import './App.css'
 
 function App() {
-  let title = 'hello India'
-  let list = ['delhi', 'mumbai', 'calcutta', 'chenai', 'pune', 'lonaval']
+  let title = 'Event Demo'
+
+  let myfun = () => {
+    alert('I am a click handelar')
+  }
+
   return (
     <div>
       <h1>{title}</h1>
-      <ul>
-        {list.map((item) => {
-          return <li> {item}</li>
-        })}
-      </ul>
+      <input type="button" value="click me" onClick={myfun} />
     </div>
   )
 }
-
 export default App
