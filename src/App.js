@@ -2,30 +2,12 @@ import logo from './logo.svg'
 import './App.css'
 import { useState } from 'react'
 
-export default function App() {
-  const [list, setList] = useState([])
-
-  let addNewHello = () => {
-    const newList = [...list, 'hello World']
-    setList(newList)
-    console.log(list)
-  }
-
+function App() {
   return (
     <div>
-      <h1>Working with event and list</h1>
-      <input type="button" value="say hello" onClick={addNewHello} />
-      {list.map((item) => {
-        return (
-          <h3>
-            {item}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-            quasi, officiis id vel esse non incidunt dicta ullam ea harum error
-            atque facilis quam perspiciatis ipsa nulla ab labore similique.
-          </h3>
-        )
-      })}
+      <h1 className="bg-secondary text-light p-2">Hello Abhijeet</h1>
     </div>
   )
 }
-//export default App
+
+export default App
