@@ -8,12 +8,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 export default function App() {
   return (
     <BrowserRouter>
-      <Link to="/hw"> Hellooo</Link>
-      <Link to="/hu"> Universe</Link>
-      <Link to="/page1"> Page1</Link>
-      <Link to="/page2">Page2</Link>
-      <Link to="/page3">Page3</Link>
-
+      <NavMenu />
       <Route exact={true} path="/page1" component={Page1} />
       <Route exact={true} path="/page2" component={Page2} />
       <Route exact={true} path="/page3" component={Page3} />
@@ -21,6 +16,17 @@ export default function App() {
       <Route exact={true} path="/hu" component={HelloUniverse} />
       <Route exact={true} path="/" component={Page1} />
     </BrowserRouter>
+  )
+}
+function NavMenu() {
+  return (
+    <div>
+      <Link to="/hw">Helooo</Link>
+      <Link to="/hu"> Universe</Link>
+      <Link to="/page1"> Page1</Link>
+      <Link to="/page2">Page2</Link>
+      <Link to="/page3">Page3</Link>
+    </div>
   )
 }
 
