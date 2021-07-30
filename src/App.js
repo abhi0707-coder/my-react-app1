@@ -31,10 +31,10 @@ function MyRegisterComponent() {
   const addNewUser = () => {
     const newuser = {
       id: userList.length + 1,
-      name: 'Sample',
+      name: 'Uname',
       email: 'sample@gmail.com',
       password: '****',
-      mobile: '1212',
+      mobile: '787878',
     }
 
     const newUserList = [newuser, ...userList]
@@ -106,7 +106,7 @@ function MyRegisterComponent() {
               <tr>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
-                <td>{item.password}</td>
+                <td>*****</td>
                 <td>{item.email}</td>
                 <td>{item.mobile}</td>
               </tr>
