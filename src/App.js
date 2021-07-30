@@ -31,6 +31,14 @@ function MyComponent() {
     let newthought = e.target.value
     setThought(newthought)
   }
+  // ENTER-2
+  const handleKeyEvent = (e) => {
+    // console.log(e.key, e.keyCode);
+    if (e.keyCode == 13) {
+      // console.log("User Has Pressed Entered....");
+      postYourThought()
+    }
+  }
 
   return (
     <div className="m-2">
@@ -45,6 +53,7 @@ function MyComponent() {
         placeholder="Post Your Thoughts"
         value={thought} //2
         onChange={handleInputChange} //3
+        onKeyDown={handleKeyEvent} // ENTER-1
       />
       <input
         type="
