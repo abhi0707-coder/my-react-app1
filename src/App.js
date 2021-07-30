@@ -7,75 +7,36 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <NavMenu />
-      <Route exact={true} path="/page1" component={Page1} />
-      <Route exact={true} path="/page2" component={Page2} />
-      <Route exact={true} path="/page3" component={Page3} />
-      <Route exact={true} path="/hw" component={HelloWorld} />
-      <Route exact={true} path="/hu" component={HelloUniverse} />
-      <Route exact={true} path="/" component={Page1} />
-    </BrowserRouter>
-  )
-}
-function NavMenu() {
-  return (
     <div>
-      <Link to="/hw">Helooo</Link>
-      <Link to="/hu"> Universe</Link>
-      <Link to="/page1"> Page1</Link>
-      <Link to="/page2">Page2</Link>
-      <Link to="/page3">Page3</Link>
+      <MyComponent />
     </div>
   )
 }
 
-function Page1() {
+function MyComponent() {
+  let [list, setList] = useState(['Abhijeet', 'tushar', 'Rekha', 'Rajendra'])
   return (
-    <div>
-      <h1>Page1 Lonavala</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod similique
-        aut sapiente delectus, dignissimos nesciunt perferendis velit ad
-        repellendus facere consequuntur debitis! Quidem iste dolor veniam
-        accusamus, molestiae commodi modi!
-      </p>
+    <div className="m-2">
+      <h1>Work With Forms</h1>
 
-      <h1>Page1 Lonavala</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod similique
-        aut sapiente delectus, dignissimos nesciunt perferendis velit ad
-        repellendus facere consequuntur debitis! Quidem iste dolor veniam
-        accusamus, molestiae commodi modi!
-      </p>
-    </div>
-  )
-}
-
-function Page2() {
-  return (
-    <div>
-      <h1>Page2 Goa</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod similique
-        aut sapiente delectus, dignissimos nesciunt perferendis velit ad
-        repellendus facere consequuntur debitis! Quidem iste dolor veniam
-        accusamus, molestiae commodi modi!
-      </p>
-    </div>
-  )
-}
-
-function Page3() {
-  return (
-    <div>
-      <h1>Page3 Delhi</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod similique
-        aut sapiente delectus, dignissimos nesciunt perferendis velit ad
-        repellendus facere consequuntur debitis! Quidem iste dolor veniam
-        accusamus, molestiae commodi modi!
-      </p>
+      <input
+        type="text"
+        className="form-control form-control-lg my-2"
+        style={{ height: 70 }}
+        placeholder="Post Your Thoughts"
+      />
+      <input
+        type="
+          button"
+        className="btn btn-dark w-100"
+        value="POST THOUGHTS"
+      />
+      <div className="h1 border p-2 bg-primary my-1 text-danger ">
+        Thoughts List
+      </div>
+      {list.map((item) => {
+        return <div className="alert alert-warning mt-2">{item}</div>
+      })}
     </div>
   )
 }
