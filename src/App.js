@@ -14,28 +14,44 @@ export default function App() {
 }
 
 function MyComponent() {
-  let [list, setList] = useState(['Abhijeet', 'tushar', 'Rekha', 'Rajendra'])
+  let [list, setList] = useState([])
+
+  //1
+  let [thought, setThought] = useState('')
 
   let postYourThought = () => {
-    let newlist = ['New Thoughts', ...list]
+    let newlist = [thought, ...list]
     setList(newlist)
+    // clear the input:thougth
+    setThought('')
   }
+  //4
+  let handleInputChange = (e) => {
+    console.log(e.target.value)
+    let newthought = e.target.value
+    setThought(newthought)
+  }
+
   return (
     <div className="m-2">
-      <h1>Work With Forms</h1>
+      <h1 className="bg-primary rounded p-3 sticky-top">
+        Work With Minifacebook
+      </h1>
 
       <input
         type="text"
         className="form-control form-control-lg my-2"
         style={{ height: 70 }}
         placeholder="Post Your Thoughts"
+        value={thought} //2
+        onChange={handleInputChange} //3
       />
       <input
         type="
           button"
         className="btn btn-dark w-100"
         value="POST THOUGHTS"
-        onDoubleClick={postYourThought}
+        onClick={postYourThought}
       />
       <div className="h1 border p-2 bg-primary my-1 text-danger ">
         Thoughts List
