@@ -15,6 +15,11 @@ export default function App() {
 
 function MyComponent() {
   let [list, setList] = useState(['Abhijeet', 'tushar', 'Rekha', 'Rajendra'])
+
+  let postYourThought = () => {
+    let newlist = ['New Thoughts', ...list]
+    setList(newlist)
+  }
   return (
     <div className="m-2">
       <h1>Work With Forms</h1>
@@ -30,6 +35,7 @@ function MyComponent() {
           button"
         className="btn btn-dark w-100"
         value="POST THOUGHTS"
+        onDoubleClick={postYourThought}
       />
       <div className="h1 border p-2 bg-primary my-1 text-danger ">
         Thoughts List
