@@ -2,13 +2,23 @@ import logo from './logo.svg'
 import './App.css'
 import { useState } from 'react'
 
-/**Pre Define tag :: IN SMALL CASE
- * <h1 />
- * <p /> <a /> <table />
- * <h1 />
- **/
-
 export default function App() {
-  return <div>Hello World</div>
+  return (
+    <div>
+      <HelloWorld />
+      <HelloWorld />
+      <HelloUniverse />
+    </div>
+  )
 }
-//export default App
+
+// TAGS :: COMPONENTS :: Follow PascalCase Convention
+// <HelloWorld />
+function HelloWorld() {
+  return <h1>Hello World</h1>
+}
+
+// <HelloUniverse />
+function HelloUniverse() {
+  return <h1>Hello Universe</h1>
+}
