@@ -4,31 +4,73 @@ import './App.css'
 export default function App() {
   return (
     <div>
-      <MyComponent />
+      <MyRegisterComponent />
     </div>
   )
 }
 
-function MyComponent() {
-  const clickHandler = (e, id) => {
-    console.log(e, id)
-  }
-
+function MyRegisterComponent() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1 className="bg-dark text-light p-3 ">User Registration </h1>
+      <form className="m-2">
+        <div>
+          <input
+            type="text"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter username"
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Passwword"
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Email"
+          />
+        </div>
 
-      <input type="button" value="CLICK ME 1" onClick={clickHandler} />
-      <input
-        type="button"
-        value="CLICK ME 2"
-        onClick={(e) => clickHandler(e, 200)} // Explicitly Passing the e
-      />
-      <input
-        type="button"
-        value="CLICK ME 33"
-        onClick={(e) => clickHandler(e, 100)} //// Customised :: explicityly create the arrow function
-      />
+        <div>
+          <input
+            type="mobile"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Mobile"
+          />
+        </div>
+        <div>
+          <input
+            type="button"
+            value="Register"
+            className="btn btn-lg btn-info w-100"
+          />
+        </div>
+      </form>
+      <table className="table table-dark table-striped m-1 ">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">PASSWORD</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">MOBILE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Abhijeet</td>
+            <td>@#@#@#@#</td>
+            <td>abhijeet@mgmil.com</td>
+            <td>817793</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   )
 }
