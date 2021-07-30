@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 function App() {
   let [counter, setCounter] = useState(0)
-  let [list, setList] = useState(['Kunal', 'akash', 'tushar'])
+  let [list, setList] = useState(['Kunal', 'Tushar'])
 
   let updateCounter = () => {
     let newvalue = counter + 1
@@ -28,7 +28,14 @@ function App() {
         onClick={addNewElement}
       />
       {list.map((item) => {
-        return <h1> {item}</h1>
+        return (
+          <div className="bg-success text-light p-2 my-1 h5">
+            {item}Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos
+            rerum eum porro excepturi culpa magnam tempore praesentium. Labore
+            similique commodi rem? Accusamus obcaecati praesentium sunt eum
+            expedita omnis fugiat beatae.
+          </div>
+        )
       })}
     </div>
   )
