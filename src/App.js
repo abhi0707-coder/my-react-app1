@@ -1,6 +1,6 @@
 import logo from './logo.svg'
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function App() {
@@ -12,21 +12,28 @@ export default function App() {
 }
 function MyRegisterComponent() {
   const [list, setList] = useState([]);
+
+  // React.
+  // useEffect();
+  // useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("I am special. like your constructor.");
+    makeAjaxBackendApiCall();
+  }, []);
+
+
+
   const makeAjaxBackendApiCall = async () => {
     const url = "https://jsonplaceholder.typicode.com/posts";
     const result = await axios.get(url)
     //console.log(result.data)
-    const newlist = [...result.data, ...list];
-    setList(newlist);
+
+    setList(result.data);
   };
   return (
     <div>
-      <h1>Lets connect with backend</h1>
-      <input
-        type="button"
-        value="MAKE AJAX/BACKEND CALL"
-        onClick={makeAjaxBackendApiCall}
-      />
+      <h1 className="bg-primary p-3 text-danger">Lets connect with backend</h1>
+
 
       {list.map((item) => {
         return <div className="alert  alert-primary text-capitalize">
