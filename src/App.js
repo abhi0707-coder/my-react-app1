@@ -13,10 +13,11 @@ export default function App() {
 function MyRegisterComponent() {
   const [list, setList] = useState([]);
   const makeAjaxBackendApiCall = async () => {
-    const url = 'https://jsonplaceholder.typicode.com/users'
+    const url = "https://jsonplaceholder.typicode.com/posts";
     const result = await axios.get(url)
     //console.log(result.data)
-    setList(result.data);
+    const newlist = [...result.data, ...list];
+    setList(newlist);
   };
   return (
     <div>
@@ -28,7 +29,8 @@ function MyRegisterComponent() {
       />
 
       {list.map((item) => {
-        return <div>{item.email}</div>;
+        return <div className="alert  alert-primary text-capitalize">
+          {item.title}</div>;
       })}
     </div>
   );
