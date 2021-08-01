@@ -1,45 +1,48 @@
-import logo from './logo.svg'
-import './App.css'
-import { useState } from 'react'
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 export default function App() {
   return (
     <div>
       <MyRegisterComponent />
     </div>
-  )
+  );
 }
 
 function MyRegisterComponent() {
   let [userList, setUserList] = useState([
-    {
-      id: 1,
-      name: 'rahul',
-      password: '****',
-      email: 'rahul@gmail.com',
-      mobile: '212121',
-    },
-    {
-      id: 2,
-      name: 'sachin',
-      password: '****',
-      email: 'sachin@gmail.com',
-      mobile: '212121',
-    },
-  ])
+    { id: 1, name: "rahul", email: "rahul@gmail.com", mobile: "212121" },
+  ]);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  const usernameChangeHandler = (e) => setUsername(e.target.value);
+  const passwordChangeHandler = (e) => setPassword(e.target.value);
+  const emailChangeHandler = (e) => setEmail(e.target.value);
+  const mobileChangeHandler = (e) => setMobile(e.target.value);
 
   const addNewUser = () => {
     const newuser = {
       id: userList.length + 1,
-      name: 'Uname',
-      email: 'sample@gmail.com',
-      password: '****',
-      mobile: '787878',
-    }
+      name: username,
+      password: password,
+      email: email,
+      mobile: mobile,
+    };
 
-    const newUserList = [newuser, ...userList]
-    setUserList(newUserList)
-  }
+    const newUserList = [newuser, ...userList];
+    setUserList(newUserList);
+
+    // After Success
+    setUsername("");
+    setPassword("");
+    setEmail("");
+    setMobile("");
+  };
 
   return (
     <div>
@@ -52,6 +55,8 @@ function MyRegisterComponent() {
             type="text"
             className="form-control form-control-lg mb-1"
             placeholder="Enter username"
+            value={username}
+            onChange={usernameChangeHandler}
           />
         </div>
 
@@ -60,6 +65,8 @@ function MyRegisterComponent() {
             type="password"
             className="form-control form-control-lg mb-1"
             placeholder="Enter Passwword"
+            value={password}
+            onChange={passwordChangeHandler}
           />
         </div>
 
@@ -68,6 +75,8 @@ function MyRegisterComponent() {
             type="email"
             className="form-control form-control-lg mb-1"
             placeholder="Enter Email"
+            value={email}
+            onChange={emailChangeHandler}
           />
         </div>
 
@@ -76,6 +85,8 @@ function MyRegisterComponent() {
             type="mobile"
             className="form-control form-control-lg mb-1"
             placeholder="Enter Mobile"
+            value={mobile}
+            onChange={mobileChangeHandler}
           />
         </div>
 
@@ -110,10 +121,10 @@ function MyRegisterComponent() {
                 <td>{item.email}</td>
                 <td>{item.mobile}</td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
