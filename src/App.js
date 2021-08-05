@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import axios from "axios";
+
 export default function App() {
   return (
     <div>
@@ -8,9 +10,10 @@ export default function App() {
     </div>
   );
 }
+
 function MyRegisterComponent() {
   let [userList, setUserList] = useState([
-    { id: 1, name: "rahul", email: "rahul@gmail.com", mobile: "212121" },
+    { id: 1, username: "rahul", email: "rahul@gmail.com", mobile: "212121" },
   ]);
 
   const [username, setUsername] = useState("");
@@ -23,16 +26,21 @@ function MyRegisterComponent() {
   const emailChangeHandler = (e) => setEmail(e.target.value);
   const mobileChangeHandler = (e) => setMobile(e.target.value);
 
-  const addNewUser = () => {
+  const addNewUser = async () => {
     const newuser = {
       id: userList.length + 1,
-      name: username,
+      username: username,
       password: password,
       email: email,
       mobile: mobile,
     };
+
     const newUserList = [newuser, ...userList];
     setUserList(newUserList);
+
+    // MAKE THE API CALL
+    let url = "http://localhost:4000/user-create";
+    await axios.post(url, { ...newuser, id: null });
 
     // After Success
     setUsername("");
@@ -40,9 +48,10 @@ function MyRegisterComponent() {
     setEmail("");
     setMobile("");
   };
+
   return (
     <div>
-      <h1 className="bg-dark text-light p-3 ">User Registeation </h1>
+      <h1 className="bg-dark text-light p-3 ">User Registration </h1>
 
       {/** FORM COMPONENT */}
       <form className="m-2">
@@ -95,6 +104,7 @@ function MyRegisterComponent() {
           />
         </div>
       </form>
+
       {/** List BOX HERE */}
       <table className="table table-dark table-striped m-2">
         <thead>
@@ -111,8 +121,8 @@ function MyRegisterComponent() {
             return (
               <tr>
                 <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>#####</td>
+                <td>{item.username}</td>
+                <td>*****</td>
                 <td>{item.email}</td>
                 <td>{item.mobile}</td>
               </tr>
