@@ -2,11 +2,27 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, useHistory } from "react-router-dom";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <div className="bg-warning mb-1 p-3">
+        <Link
+          to="/register"
+          className="btn btn-sm btn-link text-primary btn-dark p-2  w-50 "
+        >
+          Register
+        </Link>
+        <Link
+          to="/list"
+          className="btn btn-sm text-primary btn-link btn-dark p-2 w-50"
+        >
+          User List
+        </Link>
+      </div>
+
+
       <Route exact path="/register" component={MyRegisterComponent} />
       <Route exact path="/list" component={MyUserListComponent} />
       <Route exact path="/" component={MyRegisterComponent} />
@@ -15,6 +31,7 @@ export default function App() {
 }
 
 function MyRegisterComponent() {
+  const history = useHistory();
   let [userList, setUserList] = useState([]);
 
   const [username, setUsername] = useState("");
