@@ -2,12 +2,15 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 export default function App() {
   return (
-    <div>
-      <MyRegisterComponent />
-    </div>
+    <BrowserRouter>
+      <Route exact path="/register" component={MyRegisterComponent} />
+      <Route exact path="/list" component={MyUserListComponent} />
+      <Route exact path="/" component={MyRegisterComponent} />
+    </BrowserRouter>
   );
 }
 
@@ -24,18 +27,6 @@ function MyRegisterComponent() {
   const emailChangeHandler = (e) => setEmail(e.target.value);
   const mobileChangeHandler = (e) => setMobile(e.target.value);
 
-  useEffect(() => {
-    readAllUser();
-  }, []);
-
-  const readAllUser = async () => {
-    // GET API
-    let url = "http://localhost:4000/user-list";
-    const response = await axios.get(url);
-    // setUserList(response.data);
-    setUserList(response.data.reverse());
-  };
-
   const addNewUser = async () => {
     const newuser = {
       id: userList.length + 1,
@@ -50,6 +41,7 @@ function MyRegisterComponent() {
 
     // MAKE THE API CALL
     let url = "http://localhost:4000/user-create";
+    // await axios.post(url, newuser);
     await axios.post(url, { ...newuser, id: null });
 
     // After Success
@@ -61,7 +53,7 @@ function MyRegisterComponent() {
 
   return (
     <div>
-      <h1 className="bg-dark text-light p-3 ">User Registration </h1>
+      <h1 className="bg-dark text-light p-3 ">User Registeation </h1>
 
       {/** FORM COMPONENT */}
       <form className="m-2">
@@ -114,6 +106,27 @@ function MyRegisterComponent() {
           />
         </div>
       </form>
+    </div>
+  );
+}
+
+function MyUserListComponent() {
+  let [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    readAllUser();
+  }, []);
+
+  const readAllUser = async () => {
+    // GET API
+    let url = "http://localhost:4000/user-list";
+    const response = await axios.get(url);
+    setUserList(response.data.reverse());
+  };
+
+  return (
+    <div>
+      <h1 className="bg-dark text-light p-3 ">User List </h1>
 
       {/** List BOX HERE */}
       <table className="table table-dark table-striped m-2">
